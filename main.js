@@ -13,7 +13,7 @@ function readFile() {
 		trimHeaders: true,
 		complete: function(results) {
             console.log(results.data);
-            countTime(results.data);
+            countClass(results.data);
             countPrefPerClass(results.data);
 		},
 		error: errorFn
