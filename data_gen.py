@@ -1,7 +1,7 @@
 """Python script to generate fake data with a unique ID and 17 classes.
    Each 'mentor' will preference 4 out of the 17 classes (1,2,3,4).
    
-   Run the script for BASH with python data_gen.py
+   Run the script from a CLI with `python data_gen.py`
    
    This will create a file named 'fakedata.csv' with your data.
    To change the amount of data generated change the DATAROWS variable below."""
