@@ -27,16 +27,6 @@ function readFile() {
 // Counts the number of classes and adds classes as properties to the object classes
 function countClass(data) {
     let row = data[0];
-    
-    // Object.entries(row).forEach(
-    //     function(keyvaluepair) {
-    //         if (/Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday/.test(keyvaluepair[0]) 
-    //             && /\d{1,2}am|\d{1,2}pm/g.test(keyvaluepair[0])) {
-    //             classCount++;
-    //             classes[keyvaluepair[0]] = 0;
-    //         }
-    //     }
-    // );
 
     Object.keys(row).forEach(function (columnName) {
     	if (findClass(columnName)) {
