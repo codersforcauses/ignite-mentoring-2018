@@ -28,15 +28,27 @@ function readFile() {
 function countClass(data) {
     let row = data[0];
     
-    Object.entries(row).forEach(
-        function(keyvaluepair) {
-            if (/Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday/.test(keyvaluepair[0]) 
-                && /\d{1,2}am|\d{1,2}pm/g.test(keyvaluepair[0])) {
-                classCount++;
-                classes[keyvaluepair[0]] = 0;
-            }
-        }
-    );
+    // Object.entries(row).forEach(
+    //     function(keyvaluepair) {
+    //         if (/Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday/.test(keyvaluepair[0]) 
+    //             && /\d{1,2}am|\d{1,2}pm/g.test(keyvaluepair[0])) {
+    //             classCount++;
+    //             classes[keyvaluepair[0]] = 0;
+    //         }
+    //     }
+    // );
+
+    Object.keys(row).forEach(function (columnName) {
+    	if (findClass(columnName)) {
+    		classCount++;
+    		classes[columnName] = 0;
+    	}
+    });
+}
+
+function findClass(columnName) {
+	return /Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday/.test(columnName) 
+                && /\d{1,2}am|\d{1,2}pm/g.test(columnName)
 }
 
 // Counts the number of preferences for each class
