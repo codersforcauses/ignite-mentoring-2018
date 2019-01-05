@@ -5,7 +5,7 @@
    Each 'mentor' also has a unique 'name'.
 
    Run the script from a CLI with python data_gen.py
-   
+
    This will create a file named 'fakedata.csv' with your data.
    To change the amount of data generated change the DATAROWS variable below.
    To add new classes, add them to the CLASSTIMES list and modify NUMCLASSES as appropriate."""
