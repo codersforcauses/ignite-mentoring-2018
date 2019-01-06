@@ -40,9 +40,9 @@ CLASSTIMES = ['Monday 9:55-11am - Kiara College', 'Monday 10-11am - Balga SHS', 
 NUMCLASSES = len(CLASSTIMES)
 
 with open("fakedata.csv", "wb") as csvfile:
-    headerString = 'Timestamp, Name, Email, Phone Number, Do you have a Working With Children Check? If not- please organise this before next Monday the 13th.,\
-    If you do have a WWCC, what is your number?, Can you drive to and from your class?, What is your gender?\
-    Have you mentored before?'
+    headerString = 'Timestamp,Name,Email,Phone Number,Do you have a Working With Children Check? If not- please organise this before next Monday the 13th.,\
+If you do have a WWCC what is your number?,Can you drive to and from your class?,What is your gender?\
+,Have you mentored before?'
 
     for classtime in CLASSTIMES:
         headerString += (', ' + classtime)
