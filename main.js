@@ -45,7 +45,7 @@ function findClass(columnName) {
 function countPrefPerClass(data) {
     data.forEach(function(mentor) {
         Object.entries(classes).forEach(function(aClass) {
-            if (mentor[aClass[0]] != "") {
+            if (mentor[aClass[0]] != "" && mentor[aClass[0]] != 0) {
                 classes[aClass[0]]++;
             }
         });
