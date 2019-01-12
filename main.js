@@ -15,10 +15,21 @@ function readFile() {
             console.log(results.data);
             countClass(results.data);
             countPrefPerClass(results.data);
+            countExperiencedMentors(results.data);
             console.log(classCount);
             console.log(classes);
-		},
-		error: errorFn
+        },
+        error: errorFn,
+        transform: function(value, header) {
+            switch (header){
+                case "Have you mentored before?":
+                case "Can you drive to and from your class?":
+                case "Do you have a Working With Children Check? If not- please organise this before next Monday the 13th.":
+                    value = (value == "Yes") ? true : false;
+                    break;
+            }
+            return value;
+        }
     };
 
 	let results = Papa.parse(input, config);	
@@ -50,6 +61,16 @@ function countPrefPerClass(data) {
             }
         });
     });
+}
+
+function countExperiencedMentors(data) {
+    let numExperienced = 0;
+    data.forEach(function(mentor) {
+        if(mentor["Have you mentored before?"]){
+            numExperienced++;
+        }
+    });
+    console.log(`Number of experience mentors: ${numExperienced}`);
 }
 
 // Handles errors in parsing CSV file
