@@ -63,6 +63,18 @@ function countPrefPerClass(data) {
             }
         });
     });
+
+    //Alert & Remove classes without enough preferences to make up the minimum requiredxs
+    let insufficientClasses = []
+    for(let thisClass in classes) {
+        if(classes[thisClass[0]] < minMentor){
+            insufficientClasses.push(thisClass);
+            delete classes[thisClass];
+            classCount--;
+        }
+    }
+    if(insufficientClasses.length>0) alert(`The folowing classes have insufficient\
+    preferences and could not be allocated:\n${insufficientClasses}`);
 }
 
 function countExperiencedMentors(data) {
@@ -86,7 +98,7 @@ function bruteForce(data) {
     let iterationCounter = 0;
     let classAllocations;
     while(!conditionsSatisfied) {
-        classAllocations = classesPreferedMentors(data);
+        classAllocations = assignRandomMentors(data);
         let sizeSatisfied = checkSizes(classAllocations);
         let driversSatisfied = checkAtLeastOneDriver(classAllocations);
         let experiencedSatisfied = checkExperienced(classAllocations);
@@ -140,7 +152,7 @@ function checkSizes(classAllocations) {
     return true;
 }
 
-function classesPreferedMentors(data) {
+function assignRandomMentors(data) {
     let classAllocations = {};
     let classKeys = Object.keys(classes);
     for(let key in classKeys) {
