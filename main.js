@@ -2,7 +2,7 @@ const minMentor = 5
 const maxMentor = 7
 let classCount = 0;
 let classes = {};
-
+// helllo this is dylan
 // Reads the uploaded CSV file and parse the data into objects
 function readFile() {
     let input = document.getElementById("csvfile").files[0];
