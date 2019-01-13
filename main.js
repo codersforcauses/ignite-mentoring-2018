@@ -114,6 +114,34 @@ function bruteForce(data) {
             console.log(classAllocations[classKeys[key]][i]["Name"]);
         }
     }
+
+    writeResult(classAllocations)
+}
+
+function writeResult(classAllocations) {
+    const result = []
+    Object.keys(classAllocations).forEach(function(className) {
+        classAllocations[className].forEach(function(mentor) {
+            mentor['Assigned Class'] = className
+            result.push(mentor)
+        })
+    })
+
+    const csv = Papa.unparse(result)
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+
+    const link = document.createElement("a");
+    if (link.download !== undefined) {
+        const url = URL.createObjectURL(blob);
+        link.setAttribute("href", url);
+        link.setAttribute("download", 'output.csv');
+        link.style.visibility = 'hidden';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    } else {
+        alert('Browser does not support the download attribute')
+    }
 }
 
 function checkExperienced(classAllocations) {
