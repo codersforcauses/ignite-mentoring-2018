@@ -115,6 +115,7 @@ function bruteForce(data) {
         }
     }
 
+    // COMMENT THIS OUT IF YOU DON'T WANT IT TO KEEP DOWNLOADING
     writeResult(classAllocations)
 }
 
@@ -180,6 +181,8 @@ function checkSizes(classAllocations) {
     return true;
 }
 
+// Randomly picks a preference for each mentor e.g. 1-4 and the randomly chosen preference (a class)
+// assigned to that mentor
 function assignRandomMentors(data) {
     let classAllocations = {};
     let classKeys = Object.keys(classes);
