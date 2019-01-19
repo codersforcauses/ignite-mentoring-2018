@@ -8,8 +8,22 @@
     <!--<link rel="stylesheet" type="text/css" media="screen" href="main.css" />-->
     <script src="papaparse.min.js"></script>
     <script src="main.js"></script>
+    <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-    <input type="file" id="csvfile" onchange="readFile();"/>
+    <h1>Ignite Mentoring</h1>
+    <h2>Mentor Allocator</h2>
+    <br><br><br><br><br>
+    <p>Upload a CSV file containing your mentor information and we will automatically 
+        allocate all your mentors to a class!
+    </p>
+    <div class="inputDiv">
+        <input type="radio" name="download" id="downloadRadio" value="Download">Download as a CSV?<br>
+        <input type="file" id="csvfile" onchange="readFile();"/>
+    </div>
+    <br>
+    <div id="resultTable">
+        
+    </div>
 </body>
 </html>
