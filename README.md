@@ -3,10 +3,13 @@
 Web-app
 Learn HTML, CSS, JavaScript
 ## Meeting Days
-Saturday 12th Jan, 9am-5pm
+Every Saturday, 9am-5pm
+## Finish Day
+When we have a product ready to present to the client
 ## To-do
     * Practicing HTML, CSS, JS fundamentals
     * Figure out and implement an algorithm
+    * Add some css to the thing
 
 ## Project Structure
 Right now the project is just purely made from HTML and JS no backend rightnow.
