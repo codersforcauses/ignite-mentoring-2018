@@ -3,6 +3,7 @@ const maxMentor = 7
 const numExperiencedRequired = 2;
 let classCount = 0;
 let classes = {};
+let data1 = null;
 
 // Reads the uploaded CSV file and parse the data into objects
 function readFile() {
@@ -19,6 +20,7 @@ function readFile() {
             countExperiencedMentors(results.data);
             console.log(classCount);
             console.log(classes);
+            data1 = results.data;
             bruteForce(results.data);
         },
         error: errorFn,
@@ -93,17 +95,25 @@ function errorFn() {
 }
 
 function bruteForce(data) {
+    const data2 = data? data: data1;
+    console.log(data);
     let conditionsSatisfied = false;
+    let iterationLimit = 7000;
 
     let iterationCounter = 0;
     let classAllocations;
     while(!conditionsSatisfied) {
-        classAllocations = assignRandomMentors(data);
+        classAllocations = assignRandomMentors(data2);
         let sizeSatisfied = checkSizes(classAllocations);
         let driversSatisfied = checkAtLeastOneDriver(classAllocations);
         let experiencedSatisfied = checkExperienced(classAllocations);
         conditionsSatisfied = (sizeSatisfied && driversSatisfied && experiencedSatisfied) ? true : false;
         iterationCounter++;
+        if (iterationCounter > iterationLimit) {
+            alert(`Could not properly allocate the mentors in less than ${iterationLimit}\
+             iterations. Please try again.\n(NOTE: This may occur repeatedly if you have very few mentors on file)`);
+            return;
+        }
     }
     console.log(`Requirements satisfied in ${iterationCounter} random iterations!`);
     
@@ -115,8 +125,11 @@ function bruteForce(data) {
         }
     }
 
-    // COMMENT THIS OUT IF YOU DON'T WANT IT TO KEEP DOWNLOADING
-    writeResult(classAllocations)
+    generateTable(classAllocations);
+
+    if(document.getElementById("downloadRadio").checked){
+        writeResult(classAllocations)
+    }    
 }
 
 function writeResult(classAllocations) {
@@ -201,3 +214,52 @@ function assignRandomMentors(data) {
 
     return classAllocations;
 }
+
+function generateTable(classAllocations) {
+
+    let tableColumns = classCount
+    let tableRows = 0;
+
+    let classKeys = Object.keys(classAllocations);
+    //get max num of rows needed
+    for(let key in classKeys) {
+        if (classAllocations[classKeys[key]].length > tableRows) tableRows = classAllocations[classKeys[key]].length;
+    }
+
+    let classNames = [];
+    let keyCtr=0;
+    for(let key in classKeys) {
+        let innerArr = []
+        for(let j=0; j<tableRows; j++) {
+            innerArr[j] = (classAllocations[classKeys[key]].length > j) ? classAllocations[classKeys[key]][j]["Name"] : "";
+        }
+        classNames[keyCtr] = innerArr;
+        keyCtr++;
+    }
+    console.table(classNames);
+
+    let tableDiv = document.getElementById("resultTable");
+    tableDiv.innerHTML = '';
+    let tbl = document.createElement("table");
+    let headerRow = document.createElement("tr");
+    for(let key in classKeys) {
+        let cell = document.createElement("td");
+        let cellText = document.createTextNode(classKeys[key]);
+        cell.appendChild(cellText);
+        headerRow.appendChild(cell);
+    }
+    tbl.appendChild(headerRow);
+
+    for(let r=0; r<tableRows; r++) {
+        let row = document.createElement("tr");
+
+        for(let c = 0; c<tableColumns; c++) {
+            let cell = document.createElement("td");
+            let cellText = document.createTextNode(classNames[c][r]);
+            cell.appendChild(cellText);
+            row.appendChild(cell);
+        }
+        tbl.appendChild(row);
+    }
+    tableDiv.appendChild(tbl);
+} 

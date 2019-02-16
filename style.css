@@ -69,6 +69,7 @@ input {
 table {
     border-collapse:collapse;
     border:1px solid #7f7f7f;
+    margin: auto;
 }
 
 td {
