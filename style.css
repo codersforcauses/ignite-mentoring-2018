@@ -19,6 +19,9 @@ html {
     height: 75px;
     display: inline-flex;
     box-sizing: border-box;
+    width: 100%;
+    position: fixed;
+    top: 0;
 }
 
 body {
