@@ -1,8 +1,9 @@
 const minMentor = 5
-const maxMentor = 7
+const maxMentor = 11
 const numExperiencedRequired = 2;
 let classCount = 0;
 let classes = {};
+let data1 = null;
 
 // Reads the uploaded CSV file and parse the data into objects
 function readFile() {
@@ -19,6 +20,7 @@ function readFile() {
             countExperiencedMentors(results.data);
             console.log(classCount);
             console.log(classes);
+            data1 = results.data;
             bruteForce(results.data);
         },
         error: errorFn,
@@ -93,13 +95,15 @@ function errorFn() {
 }
 
 function bruteForce(data) {
+    const data2 = data? data: data1;
+    console.log(data);
     let conditionsSatisfied = false;
     let iterationLimit = 7000;
 
     let iterationCounter = 0;
     let classAllocations;
     while(!conditionsSatisfied) {
-        classAllocations = assignRandomMentors(data);
+        classAllocations = assignRandomMentors(data2);
         let sizeSatisfied = checkSizes(classAllocations);
         let driversSatisfied = checkAtLeastOneDriver(classAllocations);
         let experiencedSatisfied = checkExperienced(classAllocations);
@@ -186,6 +190,10 @@ function checkSizes(classAllocations) {
         if(classAllocations[classKeys[key]].length < minMentor){
             return false;
         }
+
+        if(classAllocations[classKeys[key]].length > maxMentor) {
+            return false;
+        }
     }
     return true;
 }
@@ -212,6 +220,7 @@ function assignRandomMentors(data) {
 }
 
 function generateTable(classAllocations) {
+
     let tableColumns = classCount
     let tableRows = 0;
 
@@ -234,10 +243,11 @@ function generateTable(classAllocations) {
     console.table(classNames);
 
     let tableDiv = document.getElementById("resultTable");
+    tableDiv.innerHTML = '';
     let tbl = document.createElement("table");
     let headerRow = document.createElement("tr");
     for(let key in classKeys) {
-        let cell = document.createElement("td");
+        let cell = document.createElement("th");
         let cellText = document.createTextNode(classKeys[key]);
         cell.appendChild(cellText);
         headerRow.appendChild(cell);
@@ -246,7 +256,7 @@ function generateTable(classAllocations) {
 
     for(let r=0; r<tableRows; r++) {
         let row = document.createElement("tr");
-        
+
         for(let c = 0; c<tableColumns; c++) {
             let cell = document.createElement("td");
             let cellText = document.createTextNode(classNames[c][r]);
@@ -256,4 +266,4 @@ function generateTable(classAllocations) {
         tbl.appendChild(row);
     }
     tableDiv.appendChild(tbl);
-}
+} 
