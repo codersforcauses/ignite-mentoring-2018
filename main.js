@@ -1,5 +1,5 @@
 const minMentor = 5
-const maxMentor = 7
+const maxMentor = 11
 const numExperiencedRequired = 2;
 let classCount = 0;
 let classes = {};
@@ -190,6 +190,10 @@ function checkSizes(classAllocations) {
         if(classAllocations[classKeys[key]].length < minMentor){
             return false;
         }
+
+        if(classAllocations[classKeys[key]].length > maxMentor) {
+            return false;
+        }
     }
     return true;
 }
@@ -243,7 +247,7 @@ function generateTable(classAllocations) {
     let tbl = document.createElement("table");
     let headerRow = document.createElement("tr");
     for(let key in classKeys) {
-        let cell = document.createElement("td");
+        let cell = document.createElement("th");
         let cellText = document.createTextNode(classKeys[key]);
         cell.appendChild(cellText);
         headerRow.appendChild(cell);
