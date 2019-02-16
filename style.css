@@ -1,32 +1,61 @@
 html {
     font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100vw;
+    display: block;
 }
 
-h1 {
-    font-weight: bold;
-    text-transform: capitalize;
+.image {
+    margin: 12.5px;
+    max-width: 50px;
+    height: 50px;
+    /* background-color: #13A0E4; */
+}
+
+.navigation {
+    background-color: #13A0E4;
+    height: 75px;
+    display: inline-flex;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+.header {
+    display: inline-flex;
+    margin: auto 20px;
     text-align: center;
-    font-size: 4vw;
-    margin: 5px;
+    color: white;
+    width: calc(100vw - 75px);
 }
 
 h2 {
     font-weight: normal;
     text-transform: capitalize;
     text-align: center;
-    font-size: 2vw;
-    margin: 5px;
+    font-size: 2.5vw;
+    margin: 40px;
+    color : rgb(0, 0, 0);
 }
 
 p {
     text-align: center;
     font-family: sans-serif;
     font-size: 1.5vw;
+    margin: 20px;
     font-weight: normal;
 }
 
 input {
     align-content: center;
+    padding-top: 20px;
+    padding-left: 72px;
 }
 
 .inputDiv {
@@ -48,3 +77,15 @@ td {
     height:50px;
     text-align:center;
 }
+
+footer {
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 1.5vw;
+    margin: 0px;
+    font-weight: normal;
+    color : white;
+    background : #13A0E4;
+    bottom: 0;
+}
+
