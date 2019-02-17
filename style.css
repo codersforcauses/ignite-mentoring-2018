@@ -79,6 +79,11 @@ td {
 }
 
 footer {
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    padding: 1rem;
     text-align: center;
     font-family: sans-serif;
     font-size: 1.5vw;

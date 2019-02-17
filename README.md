@@ -30,7 +30,7 @@ This is the main file which you open to run the app. Simply double click it and 
 
 ### `main.js`
 
-This is the main JS code for our app. Right now it is just reading the csv by using another library called papaparse
+This is the main JS code for our app. Right now it is just reading the csv by using another library called papaparse that we didn't write.
 
 ### `papaparse.min.js`
 
@@ -42,5 +42,7 @@ This is just our mentor data. csv stands for comma seperated values and it is ju
 
 ### `data_gen.py`
 
-This is just python code to help us generate some fake data
+This is just python code to help us generate some fake data.
+
+
 
