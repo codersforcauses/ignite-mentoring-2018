@@ -131,6 +131,13 @@ function bruteForce(data) {
         }
     }
 
+    let peopleAllocated = 0;
+    Object.keys(classAllocations).forEach(key => {
+        peopleAllocated += classAllocations[key].length
+    })
+
+    alert(`${peopleAllocated} people were allocated`)
+
     generateTable(classAllocations);
 
     if(document.getElementById("downloadRadio").checked){
