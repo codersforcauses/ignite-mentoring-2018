@@ -4,6 +4,16 @@ const numExperiencedRequired = 2;
 let classCount = 0;
 let classes = {};
 let data1 = null;
+const preferenceKeys = [
+    '1st Preference',
+    '2nd Preference',
+    '3rd Preference',
+    '4th Preference',
+    '5th Preference',
+    '6th Preference',
+    '7th Preference',
+    '8th Preference'
+]
 
 // Reads the uploaded CSV file and parse the data into objects
 function readFile() {
@@ -14,12 +24,9 @@ function readFile() {
         header: true,
 		trimHeaders: true,
 		complete: function(results) {
-            console.log(results.data);
             countClass(results.data);
-            countPrefPerClass(results.data);
-            countExperiencedMentors(results.data);
-            console.log(classCount);
-            console.log(classes);
+            // countPrefPerClass(results.data);
+            // countExperiencedMentors(results.data);
             data1 = results.data;
             bruteForce(results.data);
         },
@@ -41,19 +48,19 @@ function readFile() {
 
 // Counts the number of classes and adds classes as properties to the object classes
 function countClass(data) {
-    let row = data[0];
-
-    Object.keys(row).forEach(function (columnName) {
-    	if (findClass(columnName)) {
-    		classCount++;
-    		classes[columnName] = 0;
-    	}
-    });
+    data.forEach(item => {
+        Object.keys(item).forEach((columnName) => {
+            const className = item[columnName]
+            if (isClass(columnName) && classes[className] == undefined) {
+                classCount++;
+                classes[className] = 0;
+            }
+        })
+    })
 }
 
-function findClass(columnName) {
-	return /Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday/.test(columnName) 
-                && /\d{1,2}am|\d{1,2}pm/g.test(columnName)
+function isClass(columnName) {
+	return /Preference/.test(columnName)
 }
 
 // Counts the number of preferences for each class
@@ -96,7 +103,6 @@ function errorFn() {
 
 function bruteForce(data) {
     const data2 = data? data: data1;
-    console.log(data);
     let conditionsSatisfied = false;
     let iterationLimit = 7000;
 
@@ -163,7 +169,7 @@ function checkExperienced(classAllocations) {
     for(let key in classKeys) {
         let experiencedCount = 0;
         for(let i=0; i<classAllocations[classKeys[key]].length; i++) {
-            if(classAllocations[classKeys[key]][i]["Have you mentored before?"]) experiencedCount++;
+            if(classAllocations[classKeys[key]][i]["Have you had experience mentoring with Ignite?"]) experiencedCount++;
         }
         if(experiencedCount<2) return false;
     }
@@ -176,7 +182,7 @@ function checkAtLeastOneDriver(classAllocations) {
     for(let key in classKeys) {
         let classHasDriver = false;
         for(let i=0; i<classAllocations[classKeys[key]].length; i++) {
-            if(classAllocations[classKeys[key]][i]["Can you drive to and from your class?"]) classHasDriver = true;
+            if(classAllocations[classKeys[key]][i]["Do you have both a license and a car to drive to classes?"]) classHasDriver = true;
         }
         if(!classHasDriver) return false;
     }
@@ -208,12 +214,8 @@ function assignRandomMentors(data) {
     }
 
     data.forEach(function(mentor) {
-        let randPref = Math.floor(Math.random() * (4-1 + 1)) + 1;
-
-        Object.entries(classes).forEach(function(aClass) {
-            let thisKey = aClass[0];
-            if (mentor[aClass[0]] == randPref) classAllocations[thisKey].push(mentor);
-        });
+        let preferenceKey = preferenceKeys[Math.floor(Math.random() * (4))];
+        classAllocations[mentor[preferenceKey]].push(mentor)
     })
 
     return classAllocations;
