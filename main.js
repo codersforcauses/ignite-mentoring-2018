@@ -1,6 +1,6 @@
-const minMentor = 5
+const minMentor = 0
 const maxMentor = 11
-const numExperiencedRequired = 2;
+const numExperiencedRequired = 0;
 let classCount = 0;
 let classes = {};
 let data1 = null;
@@ -25,6 +25,7 @@ function readFile() {
 		trimHeaders: true,
 		complete: function(results) {
             countClass(results.data);
+            console.log(results.data)
             // countPrefPerClass(results.data);
             // countExperiencedMentors(results.data);
             data1 = results.data;
@@ -33,9 +34,9 @@ function readFile() {
         error: errorFn,
         transform: function(value, header) {
             switch (header){
-                case "Have you mentored before?":
-                case "Can you drive to and from your class?":
-                case "Do you have a Working With Children Check? If not- please organise this before next Monday the 13th.":
+                case "Do you have a Working With Children Check?":
+                case "Have you had experience mentoring with Ignite?":
+                case "Do you have both a license and a car to drive to classes?":
                     value = (value == "Yes") ? true : false;
                     break;
             }
@@ -104,7 +105,7 @@ function errorFn() {
 function bruteForce(data) {
     const data2 = data? data: data1;
     let conditionsSatisfied = false;
-    let iterationLimit = 7000;
+    let iterationLimit = 100000;
 
     let iterationCounter = 0;
     let classAllocations;
@@ -112,6 +113,7 @@ function bruteForce(data) {
         classAllocations = assignRandomMentors(data2);
         let sizeSatisfied = checkSizes(classAllocations);
         let driversSatisfied = checkAtLeastOneDriver(classAllocations);
+        driversSatisfied = true
         let experiencedSatisfied = checkExperienced(classAllocations);
         conditionsSatisfied = (sizeSatisfied && driversSatisfied && experiencedSatisfied) ? true : false;
         iterationCounter++;
@@ -135,10 +137,9 @@ function bruteForce(data) {
     Object.keys(classAllocations).forEach(key => {
         peopleAllocated += classAllocations[key].length
     })
-
-    alert(`${peopleAllocated} people were allocated`)
-
+    console.log(classAllocations)
     generateTable(classAllocations);
+    alert(`${peopleAllocated} people were allocated`)
 
     if(document.getElementById("downloadRadio").checked){
         writeResult(classAllocations)
@@ -178,7 +179,7 @@ function checkExperienced(classAllocations) {
         for(let i=0; i<classAllocations[classKeys[key]].length; i++) {
             if(classAllocations[classKeys[key]][i]["Have you had experience mentoring with Ignite?"]) experiencedCount++;
         }
-        if(experiencedCount<2) return false;
+        if(experiencedCount<numExperiencedRequired) return false;
     }
     return true;
 }
@@ -221,7 +222,15 @@ function assignRandomMentors(data) {
     }
 
     data.forEach(function(mentor) {
-        let preferenceKey = preferenceKeys[Math.floor(Math.random() * (4))];
+        let limit = 0
+        for (let i = 0; i < preferenceKeys.length; i++) {
+            if (mentor[preferenceKeys[i]]) limit++
+            else break;
+        }
+        if (limit > 6) {
+            limit = 6
+        }
+        let preferenceKey = preferenceKeys[Math.floor(Math.random() * (limit))];
         classAllocations[mentor[preferenceKey]].push(mentor)
     })
 
@@ -244,7 +253,7 @@ function generateTable(classAllocations) {
     for(let key in classKeys) {
         let innerArr = []
         for(let j=0; j<tableRows; j++) {
-            innerArr[j] = (classAllocations[classKeys[key]].length > j) ? classAllocations[classKeys[key]][j]["Name"] : "";
+            innerArr[j] = (classAllocations[classKeys[key]].length > j) ? classAllocations[classKeys[key]][j]["Please give your full name:"] : "";
         }
         classNames[keyCtr] = innerArr;
         keyCtr++;
