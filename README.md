@@ -9,10 +9,10 @@ To provide [Ignite Mentoring](http://www.ignitementoring.org) a web based tool t
 - [x] Practicing HTML, CSS, JS fundamentals
 - [x] Figure out and implement an algorithm
 - [x] Add some CSS to the thing
-- [] Work on the visual aesthetic of the project via HTML
-- [] Add additional features including having a specified amount of mentors in a class
-- [] Adding a shuffle button for the algorithm
-- [] Need to check for gender balance in the algorithm
+- [ ] Work on the visual aesthetic of the project via HTML
+- [ ] Add additional features including having a specified amount of mentors in a class
+- [ ] Adding a shuffle button for the algorithm
+- [ ] Need to check for gender balance in the algorithm
 
 ## Tech Stack
 
