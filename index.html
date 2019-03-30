@@ -1,43 +1,52 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta title = "Ignite Mentoring: Mentor Allocator">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta title="Ignite Mentoring: Mentor Allocator" />
     <title>Page Title</title>
     <!-- <img src = "./ignite logo.png" class = "hover-grayscale"> -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--<link rel="stylesheet" type="text/css" media="screen" href="main.css" />-->
     <script src="papaparse.min.js"></script>
-    <link rel="stylesheet" href="style.css"/>
-</head>    
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <nav class="navigation">
-        <div style="width: 75px;">
-            <img src="./ignite logo.png" alt="ignite logo" class="image">
-        </div>
-        <div class="header">
-            <h1>
-                    Ignite Mentoring
-            </h1>
-        </div>
+      <div style="width: 75px;">
+        <img
+          src="./static/logo/ignitementoring.png"
+          alt="ignite logo"
+          class="image"
+        />
+      </div>
+      <div class="header">
+        <h1>
+          Ignite Mentoring
+        </h1>
+      </div>
     </nav>
     <h2>Mentor Allocator</h2>
-    <p>Upload a CSV file containing your mentor information and we will automatically 
-        allocate all your mentors to a class!
+    <p>
+      Upload a CSV file containing your mentor information and we will
+      automatically allocate all your mentors to a class!
     </p>
     <div class="inputDiv">
-        <input type="checkbox" name="download" id="downloadRadio" value="Download">Download as a CSV?<br>
-        <input type="file" id="csvfile" onchange="readFile();"/>
-        <button onClick="bruteForce();">Re-Shuffle</button>
+      <input
+        type="checkbox"
+        name="download"
+        id="downloadRadio"
+        value="Download"
+      />Download as a CSV?<br />
+      <input type="file" id="csvfile" onchange="readFile();" />
+      <button onClick="bruteForce();">Re-Shuffle</button>
     </div>
-    <br>
+    <br />
     <div id="resultTable" style="margin-bottom: calc(1.5vw + 60px)"></div>
-        
-    <footer id = "footer">
-        <p> Designed and written by Coders for Causes 2019 © </p>
-    </footer>
-    <script src="./main.js"  type="text/javascript"></script>
 
-</body>
+    <footer id="footer">
+      <p>Designed and written by Coders for Causes 2019 ©</p>
+    </footer>
+    <script src="./main.js" type="text/javascript"></script>
+  </body>
 </html>
