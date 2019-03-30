@@ -73,6 +73,16 @@ input {
   margin-right: 10rem;
 }
 
+.uploadcsv {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.uploadcsvlabel,
 .reshuffle {
   background-color: #13a0e4;
   border: none;
@@ -80,8 +90,20 @@ input {
   padding: 15px 3rem;
   text-align: center;
   font-weight: bold;
+  font-size: 1rem;
 }
 
+/* .reshuffle {
+  background-color: #13a0e4;
+  border: none;
+  color: white;
+  padding: 15px 3rem;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1rem;
+} */
+
+.uploadcsvlabel:hover,
 .reshuffle:hover {
   background-color: #55bcf0;
   border: none;
@@ -89,8 +111,10 @@ input {
   padding: 15px 3rem;
   text-align: center;
   font-weight: bold;
+  cursor: pointer;
 }
 
+.uploadcsvlabel:active,
 .reshuffle:active {
   background-color: #13a0e4;
   border: none;
