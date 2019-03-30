@@ -6,35 +6,37 @@ html {
   display: block;
 }
 
-.image {
-  margin: 12.5px;
-  max-width: 50px;
-  height: 50px;
-  /* background-color: #13A0E4; */
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
 }
 
 .navigation {
   background-color: #13a0e4;
-  height: 75px;
+  height: 6rem;
   display: inline-flex;
   box-sizing: border-box;
   width: 100%;
-  position: fixed;
   top: 0;
-}
-
-body {
-  margin: 0px;
-  height: 100%;
-  width: 100%;
 }
 
 .header {
   display: inline-flex;
+  height: 6rem;
   margin: auto 20px;
   text-align: center;
   color: white;
   width: calc(100vw - 75px);
+  font-weight: normal;
+  letter-spacing: 3px;
+}
+
+h1 {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  letter-spacing: 3px;
+  font-weight: normal;
 }
 
 h2 {
@@ -42,8 +44,12 @@ h2 {
   text-transform: capitalize;
   text-align: center;
   font-size: 2.5vw;
-  margin: 40px;
   color: rgb(0, 0, 0);
+}
+
+.container {
+  width: 100%;
+  text-align: center;
 }
 
 .instructions {
@@ -71,9 +77,12 @@ input {
   text-align: center;
   margin-left: 10rem;
   margin-right: 10rem;
+  user-select: none;
 }
 
-.uploadcsv {
+/* Hide default button and checkbox */
+.uploadcsv,
+#downloadRadio {
   width: 0.1px;
   height: 0.1px;
   opacity: 0;
@@ -84,6 +93,7 @@ input {
 
 .uploadcsvlabel,
 .reshuffle {
+  position: relative;
   background-color: #13a0e4;
   border: none;
   color: white;
@@ -91,6 +101,21 @@ input {
   text-align: center;
   font-weight: bold;
   font-size: 1rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.downloadcsvlabel {
+  position: relative;
+  background-color: #13a0e4;
+  border: none;
+  color: white;
+  padding: 15px 3.5rem 15px 2rem;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 }
 
 .uploadcsvlabel:hover,
@@ -98,7 +123,17 @@ input {
   background-color: #55bcf0;
   border: none;
   color: white;
-  padding: 15px 3rem;
+  padding: 15px 2rem;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.downloadcsvlabel:hover {
+  background-color: #55bcf0;
+  border: none;
+  color: white;
+  padding: 15px 3.5rem 15px 2rem;
   text-align: center;
   font-weight: bold;
   cursor: pointer;
@@ -109,9 +144,62 @@ input {
   background-color: #13a0e4;
   border: none;
   color: white;
-  padding: 15px 3rem;
+  padding: 15px 2rem;
   text-align: center;
   font-weight: bold;
+}
+
+.downloadcsvlabel:active {
+  background-color: #13a0e4;
+  border: none;
+  color: white;
+  padding: 15px 3.5rem 15px 2rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Create custom checkbox */
+.checkmark {
+  position: absolute;
+  margin: 0.75rem;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+/* On hover add gray background */
+.downloadcsvlabel:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When checkbox is checked, add blue background */
+.downloadcsvlabel input:checked ~ .checkmark {
+  background-color: #13a0e4;
+}
+
+/* The checkmark */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.downloadcsvlabel input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.downloadcsvlabel .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 
 #resultTable {
