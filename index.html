@@ -10,6 +10,8 @@
     <!--<link rel="stylesheet" type="text/css" media="screen" href="main.css" />-->
     <script src="papaparse.min.js"></script>
     <link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   </head>
   <body>
     <nav class="navigation">
@@ -38,8 +40,8 @@
         id="csvfile"
         onchange="readFile();"
       />
-      <label class="uploadcsvlabel" for="csvfile">Choose a file</label>
-      <button class="reshuffle" onClick="bruteForce();">Re-Shuffle</button>
+      <label class="uploadcsvlabel" for="csvfile"><i class="fas fa-upload" style="margin-right: 1rem"></i>Choose a file</label>
+      <button class="reshuffle" onClick="bruteForce();"><i class="fas fa-random" style="margin-right: 1rem"></i>Re-Shuffle</button>
         <input type="checkbox" name="download" id="downloadRadio" value="Download" />Download as a CSV?</input>
     </div>
     <br />

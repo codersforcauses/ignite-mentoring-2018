@@ -87,21 +87,11 @@ input {
   background-color: #13a0e4;
   border: none;
   color: white;
-  padding: 15px 3rem;
+  padding: 15px 2rem;
   text-align: center;
   font-weight: bold;
   font-size: 1rem;
 }
-
-/* .reshuffle {
-  background-color: #13a0e4;
-  border: none;
-  color: white;
-  padding: 15px 3rem;
-  text-align: center;
-  font-weight: bold;
-  font-size: 1rem;
-} */
 
 .uploadcsvlabel:hover,
 .reshuffle:hover {
