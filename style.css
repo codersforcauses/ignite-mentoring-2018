@@ -46,12 +46,19 @@ h2 {
   color: rgb(0, 0, 0);
 }
 
-p {
+.instructions {
   text-align: center;
-  font-family: sans-serif;
-  font-size: 1.5vw;
-  margin: 20px;
-  font-weight: normal;
+  font-size: 1.4rem;
+  margin-left: 5rem;
+  margin-right: 5rem;
+}
+
+@media (max-width: 980px) {
+  .instructions {
+    font-size: 1.3rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
 }
 
 input {
@@ -62,6 +69,35 @@ input {
 
 .inputDiv {
   text-align: center;
+  margin-left: 10rem;
+  margin-right: 10rem;
+}
+
+.reshuffle {
+  background-color: #13a0e4;
+  border: none;
+  color: white;
+  padding: 15px 3rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.reshuffle:hover {
+  background-color: #55bcf0;
+  border: none;
+  color: white;
+  padding: 15px 3rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.reshuffle:active {
+  background-color: #13a0e4;
+  border: none;
+  color: white;
+  padding: 15px 3rem;
+  text-align: center;
+  font-weight: bold;
 }
 
 #resultTable {

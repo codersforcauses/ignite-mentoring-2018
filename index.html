@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta title="Ignite Mentoring: Mentor Allocator" />
-    <title>Page Title</title>
+    <title>Ignite Mentoring: Mentor Allocator</title>
     <!-- <img src = "./ignite logo.png" class = "hover-grayscale"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--<link rel="stylesheet" type="text/css" media="screen" href="main.css" />-->
@@ -16,7 +16,7 @@
       <div style="width: 75px;">
         <img
           src="./static/logo/ignitementoring.png"
-          alt="ignite logo"
+          alt="Ignite Mentoring Logo"
           class="image"
         />
       </div>
@@ -27,7 +27,7 @@
       </div>
     </nav>
     <h2>Mentor Allocator</h2>
-    <p>
+    <p class="instructions">
       Upload a CSV file containing your mentor information and we will
       automatically allocate all your mentors to a class!
     </p>
@@ -39,11 +39,10 @@
         value="Download"
       />Download as a CSV?<br />
       <input type="file" id="csvfile" onchange="readFile();" />
-      <button onClick="bruteForce();">Re-Shuffle</button>
+      <button class="reshuffle" onClick="bruteForce();">Re-Shuffle</button>
     </div>
     <br />
     <div id="resultTable" style="margin-bottom: calc(1.5vw + 60px)"></div>
-
     <footer id="footer">
       <p>Designed and written by Coders for Causes 2019 ©</p>
     </footer>
