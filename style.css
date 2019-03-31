@@ -1,117 +1,258 @@
 html {
-    font-family: sans-serif;
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100vw;
-    display: block;
-}
-
-.image {
-    margin: 12.5px;
-    max-width: 50px;
-    height: 50px;
-    /* background-color: #13A0E4; */
-}
-
-.navigation {
-    background-color: #13A0E4;
-    height: 75px;
-    display: inline-flex;
-    box-sizing: border-box;
-    width: 100%;
-    position: fixed;
-    top: 0;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  display: block;
 }
 
 body {
-    margin: 0px;
-    height: 100%;
-    width: 100%;
+  position: absolute;
+  min-height: 100%;
+  width: 100%;
+  margin: 0;
+  display: block;
+}
+
+.navigation {
+  background-color: #13a0e4;
+  height: 6rem;
+  display: inline-flex;
+  box-sizing: border-box;
+  width: 100%;
+  top: 0;
 }
 
 .header {
-    display: inline-flex;
-    margin: auto 20px;
-    text-align: center;
-    color: white;
-    width: calc(100vw - 75px);
+  position: absolute;
+  display: inline-flex;
+  height: 6rem;
+  margin-left: 7rem;
+  text-align: center;
+  color: white;
+  width: calc(100% - 7rem);
+  font-weight: normal;
+  letter-spacing: 3px;
+}
+
+h1 {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  letter-spacing: 3px;
+  font-weight: normal;
 }
 
 h2 {
-    font-weight: normal;
-    text-transform: capitalize;
-    text-align: center;
-    font-size: 2.5vw;
-    margin: 40px;
-    color : rgb(0, 0, 0);
+  font-weight: normal;
+  text-transform: capitalize;
+  text-align: center;
+  font-size: 2.5vw;
+  color: rgb(0, 0, 0);
 }
 
-p {
-    text-align: center;
-    font-family: sans-serif;
-    font-size: 1.5vw;
-    margin: 20px;
-    font-weight: normal;
+.container {
+  width: 100%;
+  text-align: center;
+}
+
+.instructions {
+  text-align: center;
+  font-size: 1.4rem;
+  margin-left: 5rem;
+  margin-right: 5rem;
+}
+
+@media (max-width: 980px) {
+  .instructions {
+    font-size: 1.3rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
 }
 
 input {
-    align-content: center;
-    padding-top: 20px;
-    padding-left: 72px;
+  align-content: center;
+  padding-top: 20px;
+  padding-left: 72px;
 }
 
 .inputDiv {
-    text-align: center;
+  text-align: center;
+  margin-left: 10rem;
+  margin-right: 10rem;
+  user-select: none;
 }
 
-#resultTable{
-    text-align: center;
+/* Hide default button and checkbox */
+.uploadcsv,
+#downloadRadio {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.uploadcsvlabel,
+.reshuffle {
+  position: relative;
+  background-color: #13a0e4;
+  border: none;
+  color: white;
+  padding: 15px 2rem;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.downloadcsvlabel {
+  position: relative;
+  background-color: #13a0e4;
+  border: none;
+  color: white;
+  padding: 15px 3.5rem 15px 2rem;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.uploadcsvlabel:hover,
+.reshuffle:hover {
+  background-color: #55bcf0;
+  border: none;
+  color: white;
+  padding: 15px 2rem;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.downloadcsvlabel:hover {
+  background-color: #55bcf0;
+  border: none;
+  color: white;
+  padding: 15px 3.5rem 15px 2rem;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.uploadcsvlabel:active,
+.reshuffle:active {
+  background-color: #13a0e4;
+  border: none;
+  color: white;
+  padding: 15px 2rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.downloadcsvlabel:active {
+  background-color: #13a0e4;
+  border: none;
+  color: white;
+  padding: 15px 3.5rem 15px 2rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Create custom checkbox */
+.checkmark {
+  position: absolute;
+  margin: 0.75rem;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+/* On hover add gray background */
+.downloadcsvlabel:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When checkbox is checked, add blue background */
+.downloadcsvlabel input:checked ~ .checkmark {
+  background-color: #13a0e4;
+}
+
+/* The checkmark */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.downloadcsvlabel input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.downloadcsvlabel .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+#resultTable {
+  text-align: center;
+  overflow: auto;
+  margin-top: 3rem;
+  margin-bottom: 6rem;
 }
 
 table {
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-    border-collapse:collapse;
-    border:1px solid #7f7f7f;
-    margin: auto;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  border: 1px solid #7f7f7f;
+  margin: auto;
 }
 
-table tr:nth-child(even){background-color: #f2f2f2;}
+table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
 
 footer {
-    position: absolute;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    padding: 1rem;
-    text-align: center;
-    font-family: sans-serif;
-    font-size: 1.5vw;
-    margin: 0px;
-    font-weight: normal;
-    color : white;
-    background : #13A0E4;
-    bottom: 0;
-    position: fixed;
-    width: 100%;
+  height: 3rem;
+  position: absolute;
+  text-align: center;
+  color: white;
+  background: #13a0e4;
+  bottom: 0;
+  width: 100%;
 }
 
 table {
-    border-collapse: collapse;
-    width: 100%;
-  }
-  
-  table td, table th {
-    border: 1px solid #ddd;
-    padding: 8px;
-  }
-    
-  table tr:hover {background-color: #ddd;}
-  
-  table th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: #13A0E4;
-    color: white;
-  }
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table td,
+table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+table tr:hover {
+  background-color: #ddd;
+}
+
+table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #13a0e4;
+  color: white;
+}
