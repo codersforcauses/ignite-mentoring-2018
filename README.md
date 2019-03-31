@@ -13,6 +13,11 @@ To provide [Ignite Mentoring](http://www.ignitementoring.org) a web based tool t
 - [ ] Add additional features including having a specified amount of mentors in a class
 - [ ] Adding a shuffle button for the algorithm
 - [ ] Need to check for gender balance in the algorithm
+- [ ] Fix ordering of columns
+- [ ] Fix sizing of result text such that overflow is avoided
+- [ ] Add padding to results
+- [ ] 'Download file' button downloads the file instead of downloading the next shuffled
+- [ ] 'Re-Shuffle' and 'Download CSV' appears/clickable after file is uploaded
 
 ## Tech Stack
 
